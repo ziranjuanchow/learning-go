@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	/*
 	a,b := 9,8
 	A(a,b)
 	fmt.Println(a,b)
@@ -26,6 +27,37 @@ func main() {
 	f := closure(10)
 	fmt.Println(f(1))
 	fmt.Println(f(2))
+	*/
+
+	/*
+	for i := 0 ; i < 5 ; i++ {
+		defer fmt.Println(i)
+	}
+	defer fmt.Println("+++++++++++++++++++++++++++++++++++++")
+	for i := 0 ; i < 5 ; i ++ {
+		defer func() {
+			fmt.Println(i)
+		}()
+	}
+	*/
+
+	//E()
+	//F()
+	//G()
+
+	var fs = [4]func(){}//函数数组
+	for i := 0 ; i < 4 ; i++{
+		defer fmt.Println("defer i = ",i)
+		defer func(){
+			fmt.Println("defer_closure i = ", i)
+		}()
+		fs[i] = func() {
+			fmt.Println("closure i =", i)//闭包
+		}
+	}
+	for _,f := range fs{
+		f()
+	}
 }
 //引用传递，但是是值拷贝
 func A(s ...int) {
@@ -56,4 +88,19 @@ func closure(x int) func(int) int{
 	return func(y int) int {
 		return x+y
 	}
+}
+
+func E(){
+	fmt.Println("Func E")
+}
+func F(){
+	defer func(){
+		if err:=recover();err != nil {
+			fmt.Println("Recover F")
+		}
+	}()
+	panic("Panic F")//执行到这里 程序就已经停止了
+}
+func G(){
+	fmt.Println("Func G")
 }
