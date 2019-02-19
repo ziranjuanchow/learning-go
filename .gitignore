@@ -1,2 +1,4 @@
 
 snippet-1/.idea/*
+*.xml
+*.iml
