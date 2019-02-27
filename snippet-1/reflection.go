@@ -38,7 +38,7 @@ func main(){
 		fmt.Printf("%#v\n",t.Field(i))
 	}
 	for j:=0;j<t.NumField();j++{
-		fmt.Printf("%#v\n",t.FieldByIndex([]int{0,0}))//按索引来取字段信息
+		fmt.Printf("index %#v\n",t.FieldByIndex([]int{0,0}))//按索引来取字段信息
 	}
 	fmt.Println("_______________________________________")
 	fmt.Println(t.FieldByName("Age"))//按照字段名来获取信息 字段名 类型 ？ 索引 ？ ？

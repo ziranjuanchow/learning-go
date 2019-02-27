@@ -1,1 +1,1 @@
-module snippet-2
+module main
